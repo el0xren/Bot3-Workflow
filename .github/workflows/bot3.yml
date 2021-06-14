@@ -30,8 +30,8 @@ jobs:
 
       - name: Setup git Environment
         run: |
-          git config --global user.name "Velosh"
-          git config --global user.email "daffetyxd@gmail.com"
+          git config --global user.name "el0xren"
+          git config --global user.email "el0xren@gmail.com"
           git config --global pull.rebase false
 
       - name: Setup Bobot Environment
@@ -52,13 +52,13 @@ jobs:
           echo "bot-announcement-id=-1001489409825" >> sf-creds.prop
           echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
           echo "bot-send-announcement=true" >> sf-creds.prop
-          echo '["1195724888","1484670029","1628025516","1469015383","1263663104"]' >> allowed2port.json
+          echo '["1263663104","1072790346"]' >> allowed2port.json
 
       - name: Clone workflow
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/VeloshGSIs/Bot3-Workflow Bobot -b stag
+          git clone https://github.com/el0xren/Bot3-Workflow Bobot -b stag
 
       - name: Install tools/packages
         continue-on-error: true
@@ -82,7 +82,7 @@ jobs:
         run: |
           export ABC="$(pwd)"
           sudo mkdir -p /usr/java/oracle; cd /usr/java/oracle
-          sudo wget 'https://github.com/VeloshGSIs/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O linux.tar.gz >> /dev/null 2> /dev/null
+          sudo wget 'https://github.com/el0xren/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O linux.tar.gz >> /dev/null 2> /dev/null
           sudo tar -xzvf linux.tar.gz
           sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/oracle/jdk-16.0.1/bin/java" 1
           sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/oracle/jdk-16.0.1/bin/javac" 1
@@ -91,7 +91,7 @@ jobs:
           sudo dpkg --purge --force-depends ca-certificates-java
           sudo apt-get install ca-certificates-java -y
           cd ${ABC}
-          git clone https://github.com/TrebleExperience/Bot3 Bot; cd Bot
+          git clone https://github.com/el0xren/Bot3 Bot; cd Bot
           wget 'https://gist.githubusercontent.com/Velosh/95c9844c8a259fc99ec1f09c7c432781/raw/1f5ee87215c4b144bdc4674032e87d68df7fbd96/0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch' -O 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
           wget 'https://gist.githubusercontent.com/Velosh/6ad1a93fa8d3d78116b17fd34068da2b/raw/721b834ab23095dd2ee795bee2f2d888616378dd/0001-Bot-Use-.-as-default-prefix.patch' -O '0001-Bot-Use-.-as-default-prefix.patch'
           git am 0001-Gradle-Patch-to-supports-lazy-method-for-Java-16-Vel.patch
@@ -110,7 +110,7 @@ jobs:
           expect -c "
           spawn git push -f
           expect \"Username\"
-          send \"Velosh\r\"
+          send \"el0xren\r\"
           expect \"Password\"
           send \"${{ secrets.PASSWORD }}\r\"
           expect \"master -> master\"
